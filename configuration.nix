@@ -8,6 +8,7 @@
     ./modules/npm.nix
     ./modules/raycast.nix
     ./modules/keyboard.nix
+    ./modules/fonts.nix
     ./macos-nix-secrets
   ];
 
