@@ -7,6 +7,7 @@
     ./modules/privacy.nix
     ./modules/npm.nix
     ./modules/raycast.nix
+    ./modules/keyboard.nix
     ./macos-nix-secrets
   ];
 
