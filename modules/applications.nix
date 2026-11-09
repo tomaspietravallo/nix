@@ -15,6 +15,7 @@
   ];
 
   homebrew.casks = [
+    "tailscale-app"
     "raycast"
     "google-chrome"
     "adobe-creative-cloud"
