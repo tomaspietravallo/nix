@@ -21,5 +21,6 @@
     "adobe-creative-cloud"
     "ghostty"
     "sozercan/repo/kaset" # YouTube Music app
+    "whatsapp"
   ];
 }
