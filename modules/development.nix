@@ -19,6 +19,7 @@
     google-cloud-sdk
     python312
     uv
+    ffmpeg
   ];
 
   homebrew.taps = [
