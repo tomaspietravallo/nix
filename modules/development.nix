@@ -17,6 +17,7 @@
     rsync
     awscli2
     google-cloud-sdk
+    python312
   ];
 
   homebrew.taps = [
