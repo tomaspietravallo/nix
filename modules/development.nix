@@ -18,6 +18,7 @@
     awscli2
     google-cloud-sdk
     python312
+    uv
   ];
 
   homebrew.taps = [
