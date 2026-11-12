@@ -27,9 +27,10 @@ fi
 
 case "$1" in
   update)
-    nix flake update --flake "path:$snapshot"
+    nix flake lock "path:$snapshot"
     if ! cmp -s "$snapshot/flake.lock" "$repo/flake.lock"; then
       cp "$snapshot/flake.lock" "$repo/flake.lock"
+      GIT_INDEX_FILE="$git_hook_index" git add -- flake.lock
     fi
     ;;
   check)
