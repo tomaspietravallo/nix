@@ -2,14 +2,14 @@
 
 {
   imports = [
-    ./modules/development.nix
-    ./modules/applications.nix
-    ./modules/privacy.nix
-    ./modules/npm.nix
-    ./modules/raycast.nix
-    ./modules/keyboard.nix
-    ./modules/fonts.nix
-    ./macos-nix-secrets
+    ../../modules/darwin/development.nix
+    ../../modules/darwin/applications.nix
+    ../../modules/darwin/privacy.nix
+    ../../modules/shared/npm.nix
+    ../../modules/darwin/raycast.nix
+    ../../modules/darwin/keyboard.nix
+    ../../modules/darwin/fonts.nix
+    ../../secrets
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";

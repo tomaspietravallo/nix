@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  environment.etc."npmrc".source = ../npm/npmrc;
+  environment.etc."npmrc".source = ../../npm/npmrc;
   environment.variables.NPM_CONFIG_GLOBALCONFIG = "/etc/npmrc";
   environment.extraInit = ''
     case ":$PATH:" in

@@ -2,3 +2,5 @@
 keys.txt
 *.agekey
 secrets/*.plain.*
+
+.DS_Store

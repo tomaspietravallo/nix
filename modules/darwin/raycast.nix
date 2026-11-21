@@ -9,7 +9,7 @@ in
   system.activationScripts.postActivation.text = lib.mkAfter ''
     /usr/bin/install -d -m 0755 -o ${lib.escapeShellArg user} -g staff ${lib.escapeShellArg directory}
     ${lib.concatMapStringsSep "\n" (name: ''
-      /usr/bin/install -m 0755 -o ${lib.escapeShellArg user} -g staff ${../raycast/scripts + "/${name}"} ${lib.escapeShellArg "${directory}/${name}"}
+      /usr/bin/install -m 0755 -o ${lib.escapeShellArg user} -g staff ${../../raycast/scripts + "/${name}"} ${lib.escapeShellArg "${directory}/${name}"}
     '') scripts}
   '';
 }

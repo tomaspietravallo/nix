@@ -13,14 +13,14 @@ mkdir -p "$snapshot"
 cp "$git_hook_index" "$temporary/index"
 
 git archive "$(GIT_INDEX_FILE="$temporary/index" git write-tree)" | tar -xf - -C "$snapshot"
-revision="$(GIT_INDEX_FILE="$temporary/index" git ls-files --stage -- macos-nix-secrets | awk '$1 == 160000 {print $2}')"
+revision="$(GIT_INDEX_FILE="$temporary/index" git ls-files --stage -- secrets | awk '$1 == 160000 {print $2}')"
 if [[ -z "$revision" ]]; then
   printf 'The secrets submodule must be staged before checking the configuration.\n' >&2
   exit 1
 fi
-mkdir -p "$snapshot/macos-nix-secrets"
-git -C macos-nix-secrets archive "$revision" | tar -xf - -C "$snapshot/macos-nix-secrets"
-if [[ -e "$snapshot/macos-nix-secrets/.private" ]]; then
+mkdir -p "$snapshot/secrets"
+git -C secrets archive "$revision" | tar -xf - -C "$snapshot/secrets"
+if [[ -e "$snapshot/secrets/.private" ]]; then
   printf 'Private identity storage must not be tracked in the secrets submodule.\n' >&2
   exit 1
 fi

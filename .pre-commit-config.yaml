@@ -24,9 +24,8 @@ repos:
         pass_filenames: false
         always_run: true
       - id: switch-darwin
-        name: Apply Darwin configuration
-        entry: >-
-          bash -c 'set -euo pipefail; while IFS= read -r git_env; do unset "$git_env"; done < <(git rev-parse --local-env-vars); exec sudo -H darwin-rebuild switch --flake ".?submodules=1#Tomass-MacBook-Pro" </dev/tty >/dev/tty 2>/dev/tty'
+        name: Apply Darwin configuration when relevant
+        entry: bash scripts/apply-mac-on-push.sh
         language: system
         stages: [pre-push]
         pass_filenames: false
