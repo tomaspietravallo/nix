@@ -16,6 +16,7 @@
     PasswordAuthentication = true;
   };
   services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "server";
   time.timeZone = "America/Argentina/Buenos_Aires";
   nix.settings.experimental-features = [
     "nix-command"
