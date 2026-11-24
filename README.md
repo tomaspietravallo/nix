@@ -5,9 +5,10 @@ Configurations for the MacBook (nix-darwin) and the NixOS remote development hos
 - `hosts/macbook` and `modules/darwin` contain Mac-specific configuration.
 - `hosts/nixos` contains the server and its hardware configuration.
 - `modules/shared` contains shared modules.
+- `hosts/nixos/sandboxes` is a private Git submodule (sandboxed-services) with the server's isolated services.
 - `secrets` is a private Git submodule containing encrypted SOPS files and platform-specific integrations. Private age identities stay outside Git.
 
-Initialize the submodule when cloning: `git clone --recurse-submodules <repository-url>`. Ensure submodule changes are committed and pushed to its private remote before updating and pushing the parent gitlink.
+Initialize the submodules when cloning: `git clone --recurse-submodules <repository-url>`. Ensure submodule changes are committed and pushed to their private remotes before updating and pushing the parent gitlink.
 
 The server configuration expects a complete checkout at `/etc/nixos/nix`, and its scheduled updater changes only the `nixpkgs-stable` lock input in that checkout. It does not reboot automatically. Provision the server age recipient before applying the secrets module.
 

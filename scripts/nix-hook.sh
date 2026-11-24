@@ -18,8 +18,11 @@ if [[ -z "$revision" ]]; then
   printf 'The secrets submodule must be staged before checking the configuration.\n' >&2
   exit 1
 fi
-mkdir -p "$snapshot/secrets"
-git -C secrets archive "$revision" | tar -xf - -C "$snapshot/secrets"
+while read -r mode submodule_revision _ path; do
+  [[ "$mode" == 160000 ]] || continue
+  mkdir -p "$snapshot/$path"
+  git -C "$path" archive "$submodule_revision" | tar -xf - -C "$snapshot/$path"
+done < <(GIT_INDEX_FILE="$temporary/index" git ls-files --stage)
 if [[ -e "$snapshot/secrets/.private" ]]; then
   printf 'Private identity storage must not be tracked in the secrets submodule.\n' >&2
   exit 1
