@@ -23,4 +23,7 @@ while IFS= read -r git_env; do
   unset "$git_env"
 done < <(git rev-parse --local-env-vars)
 
-exec sudo -H darwin-rebuild switch --flake ".?submodules=1#Tomass-MacBook-Pro" </dev/tty >/dev/tty 2>/dev/tty
+nix_env="$(command -v nix-env)"
+system="$(nix build --no-link --print-out-paths ".?submodules=1#darwinConfigurations.Tomass-MacBook-Pro.system" </dev/tty 2>/dev/tty)"
+sudo -H "$nix_env" -p /nix/var/nix/profiles/system --set "$system" </dev/tty >/dev/tty 2>/dev/tty
+exec sudo -H "$system/activate" </dev/tty >/dev/tty 2>/dev/tty
